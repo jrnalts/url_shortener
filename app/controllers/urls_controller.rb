@@ -19,9 +19,6 @@ class UrlsController < ApplicationController
   # POST /urls or /urls.json
   def create
     @url = Url.new(url_params)
-    @url.random_id = SecureRandom.uuid[0..5]
-
-    # TODO: validate if random_id duplicated
 
     respond_to do |format|
       if @url.save
@@ -35,7 +32,10 @@ class UrlsController < ApplicationController
   end
 
   def random
-    @url = Url.find_by(random_id: params[:id])
+    @url = Rails.cache.fetch("url_cache_key_#{params[:id]}") do
+      Url.find_by(random_id: params[:id])
+    end
+
     redirect_to @url.original if @url
   end
 
