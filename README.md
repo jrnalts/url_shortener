@@ -1,25 +1,22 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+URLs can be shortened on this service
 
 * Ruby version
+  3.0.2
 
-  ruby 3.0.2
-  Rails 6.1.7
+* Rails version
+  6.1.7
 
 * System dependencies
 
 * Configuration
 
-  To switch cache usage on development mode.
-  `bin/rails dev:cache`
+  To switch cache usage on development mode.<br>
+  Run `bin/rails dev:cache`
 
 * Database creation
-  
-  `rails db:create`
+  Run `rails db:create`
 
 * Database initialization
 
