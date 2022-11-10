@@ -32,11 +32,11 @@ class UrlsController < ApplicationController
   end
 
   def random
-    @url = Rails.cache.fetch("url_cache_key_#{params[:id]}") do
-      Url.find_by(random_id: params[:id])
+    url_original = Rails.cache.fetch("url_cache_key_#{params[:id]}") do
+      Url.find_by(random_id: params[:id]).original
     end
 
-    redirect_to @url.original if @url
+    redirect_to url_original if url_original
   end
 
 

@@ -17,7 +17,7 @@ class Url < ApplicationRecord
   end
 
   def add_into_cache_list
-    Rails.cache.write("url_cache_key_#{random_id}", self)
+    Rails.cache.write("url_cache_key_#{random_id}", self.original)
   end
 
   def remove_form_cache_list
