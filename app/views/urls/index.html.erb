@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Urls</h1>
+<h1>已有的短網址列表</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Original</th>
-      <th>Random</th>
+      <th>短網址</th>
+      <th>原始網址</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,11 +14,11 @@
   <tbody>
     <% @urls.each do |url| %>
       <tr>
-        <td><%= url.original %></td>
         <td><%= url.random_id %></td>
-        <td><%= link_to 'Show', url %></td>
-        <td><%= link_to 'Edit', edit_url_path(url) %></td>
-        <td><%= link_to 'Destroy', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= url.original %></td>
+        <td><%#= link_to 'Show', url %></td>
+        <td><%#= link_to 'Edit', edit_url_path(url) %></td>
+        <td><%= link_to '刪除', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Url', new_url_path %>
+<%= link_to '新增短網址', new_url_path %>
