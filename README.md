@@ -1,11 +1,13 @@
 # README
 
-URLs can be shortened on this service
+URLs can be shortened on this service, please give https for safety.
 
 * Ruby version
+  
   3.0.2
 
 * Rails version
+  
   6.1.7
 
 * System dependencies
@@ -16,6 +18,7 @@ URLs can be shortened on this service
   Run `bin/rails dev:cache`
 
 * Database creation
+
   Run `rails db:create`
 
 * Database initialization
