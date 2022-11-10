@@ -4,8 +4,7 @@ class Url < ApplicationRecord
                        uniqueness: true,
                        format: { with: /[https:\/\/]/, message: 'Format is not allowed.' }
 
-  # TODO: validate if random_id duplicated
-
+  validates :random_id, uniqueness: true
   # -------------------------- Callbacks ---------------------------------
   before_create :generate_random_id
   after_create :add_into_cache_list
@@ -17,6 +16,9 @@ class Url < ApplicationRecord
   end
 
   def add_into_cache_list
+    cache_key = Rails.cache.read("url_cache_key_1103d1")
+    generate_random_id if cache_key.present?
+
     Rails.cache.write("url_cache_key_#{random_id}", self.original)
   end
 
