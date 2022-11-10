@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   root 'urls#index'
 
-  resources :urls
+  resources :urls, except: %[edit update]
   get '/:id', to: 'urls#random'
 end
