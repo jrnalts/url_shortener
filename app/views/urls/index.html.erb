@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th>短網址</th>
-      <th>原始網址</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -14,8 +13,9 @@
   <tbody>
     <% @urls.each do |url| %>
       <tr>
-        <td><%= url.random_id %></td>
-        <td><%= url.original %></td>
+        <% shorten_url = "localhost:3000/#{url.random_id}" %>
+        <td><%= link_to shorten_url, url.original %></td>
+        <td><%#= url.original %></td>
         <td><%#= link_to 'Show', url %></td>
         <td><%#= link_to 'Edit', edit_url_path(url) %></td>
         <td><%= link_to '刪除', url, method: :delete, data: { confirm: 'Are you sure?' } %></td>

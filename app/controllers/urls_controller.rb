@@ -22,6 +22,9 @@ class UrlsController < ApplicationController
   # POST /urls or /urls.json
   def create
     @url = Url.new(url_params)
+    @url.random_id = SecureRandom.uuid[0..5]
+
+    # TODO: validate if random_id duplicated
 
     respond_to do |format|
       if @url.save
@@ -32,6 +35,11 @@ class UrlsController < ApplicationController
         format.json { render json: @url.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def random
+    @url = Url.find_by(random_id: params[:id])
+    redirect_to @url.original if @url
   end
 
   # PATCH/PUT /urls/1 or /urls/1.json
